@@ -36,7 +36,7 @@ const getRentedProducts = async (req, res) => {
             replacements: { startDate, endDate },
             type: sequelize.QueryTypes.SELECT
         });
-        res.json(results); // natijani JSON formatida yuborish
+        res.json(results);
     } catch (error) {
         console.error("Error:", error);
         res.status(500).send("Xatolik yuz berdi");
