@@ -18,6 +18,8 @@ module.exports = async function (req, res, next){
 
         const decodedToken = await jwtService.verifyAccessToken(token);
         req.user=decodedToken
+        console.log("ppp"+req.user);
+        
         next()
     } catch (error) {
         errorHandler(error, res)

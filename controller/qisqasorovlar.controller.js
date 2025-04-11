@@ -19,7 +19,7 @@ const getRentedProducts = async (req, res) => {
         res.status(500).send("Xatolik yuz berdi");
     }
   };  
-  
+
   
 
   const getDamagedClients = async (req, res) => {

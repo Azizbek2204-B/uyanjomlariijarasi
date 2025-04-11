@@ -28,9 +28,30 @@ class JwtService {
   }
 }
 
-module.exports = new JwtService(
+const jwt1 = new JwtService(
   config.get("access_keyclients"),
   config.get("refresh_keyclients"),
   config.get("access_timeclients"),
   config.get("refresh_timeclients")
 );
+
+const jwt2 = new JwtService(
+  config.get("access_keyclients"),
+  config.get("refresh_keyclients"),
+  config.get("access_timeclients"),
+  config.get("refresh_timeclients")
+);
+
+const jwt3 = new JwtService(
+  config.get("access_keyclients"),
+  config.get("refresh_keyclients"),
+  config.get("access_timeclients"),
+  config.get("refresh_timeclients")
+);
+
+
+module.exports = {
+  jwt1,
+  jwt2,
+  jwt3
+}

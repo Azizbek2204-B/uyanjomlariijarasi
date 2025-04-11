@@ -14,7 +14,7 @@ app.use(express.json(), cookieParser(), requestLogger)
 app.use("/api", mainRouter)
 
 app.use(reqestErrorLogger);
-// app.use(errorHandling);
+app.use(errorHandling);
 async function start() {
     try {
         await sequelize.authenticate()

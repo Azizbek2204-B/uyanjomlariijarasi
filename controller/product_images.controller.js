@@ -8,8 +8,8 @@ const addProductImage = async (req, res) => {
         if (error) {
             return errorHandler(error, res)
         }
-        const { productId, image_url, is_primary } = value;
-        const newImage = await ProductImage.create({ productId, image_url, is_primary });
+        const { productId, image_url, is_primary, uploaded_at } = value;
+        const newImage = await ProductImage.create({ productId, image_url, is_primary , uploaded_at});
         res.status(201).send({ message: "Image added", newImage });
     } catch (err) {
         errorHandler(err, res);

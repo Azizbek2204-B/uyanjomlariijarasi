@@ -19,6 +19,8 @@ const ProductImage = sequelize.define("product_images", {
         type: DataTypes.STRING,
         allowNull: true
     }
+},{
+    underscored:true
 })
 
 Product.hasMany(ProductImage)

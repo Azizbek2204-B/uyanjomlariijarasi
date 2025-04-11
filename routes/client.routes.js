@@ -2,19 +2,19 @@ const { addClient, getAllClients, getClientById, updateClientById, deleteClientB
 
 const router = require('express').Router();
 
-const userGuard = require("../middlewares/guards/user.guard")
 const authGuard = require("../middlewares/guards/client.self.guard")
-const userActiveGuard = require("../middlewares/guards/user.active.guard")
 const authSelfGuard = require("../middlewares/guards/user.self.guard")
+const userActiveGuard = require("../middlewares/guards/user.active.guard")
+const userGuard = require("../middlewares/guards/user.guard")
 
 router.post("/", addClient)
 router.post("/:login", loginClient)
-router.get("/",userGuard, getAllClients)
+router.get("/",userGuard, userActiveGuard, getAllClients)
 router.get("/activate/:link", activationLink);
 router.post("/logout", logoutClient)
 router.get("/refreshtoken", refreshClientToken);    
-router.get("/:id",authGuard, userActiveGuard, authSelfGuard, getClientById)
-router.put("/:id", authGuard, userActiveGuard,authSelfGuard, updateClientById)
-router.delete("/:id",userGuard, deleteClientById)
+router.get("/:id",authGuard, authSelfGuard, getClientById)
+router.put("/:id", authGuard,authSelfGuard, updateClientById)
+router.delete("/:id",authGuard,authSelfGuard, deleteClientById)
 
 module.exports = router

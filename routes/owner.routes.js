@@ -12,8 +12,8 @@ router.get("/",userGuard, getAllOwners)
 router.get("/activate/:link", activationLink)
 router.post("/logout", logoutOwner)
 router.get("/refreshtoken", refreshOwnerToken);
-router.get("/:id", authGuard, userActiveGuard,authSelfGuard,getOwnerById)
-router.put("/:id",authGuard, userActiveGuard,authSelfGuard, updateOwnerById)
+router.get("/:id", authGuard,authSelfGuard,getOwnerById)
+router.put("/:id",authGuard,authSelfGuard, updateOwnerById)
 router.delete("/:id", deleteOwnerById)
 
 module.exports = router

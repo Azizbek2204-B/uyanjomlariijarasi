@@ -38,7 +38,7 @@ const addOwner = async (req, res) => {
       activation_link,
       is_active
     });
-    await mailService.sendActivationMail(newOwner.email, `${config.get("api_url")}/api/client/activate/${activation_link}`)
+    await mailService.sendActivationMail(newOwner.email, `${config.get("api_url")}/api/owner/activate/${activation_link}`)
     res.status(201).send({ message: "New owner added", newOwner });
   } catch (error) {
     errorHandler(error, res);
@@ -48,6 +48,9 @@ const addOwner = async (req, res) => {
 const activationLink = async(req, res)=>{
     try {
         const {link} = req.params
+        console.log("------------");
+        console.log(link);
+        console.log("------------");
         const client = await Owners.findOne({where:{activation_link:link}})
         if (!client) {
             return res.status(400).send({message:"Link eskirgan yoki topilmadi"})
@@ -159,7 +162,7 @@ const loginOwner = async (req, res) => {
           return res.status(400).send({ message: "Parol noto‘g‘ri" });
       }
 
-      const payload = { id: owner.id, email: owner.email, password:owner.password_hash };
+      const payload = { id: owner.id, email: owner.email, password:owner.password_hash,is_active:owner.is_active };
       const tokens = jwtService.generateTokens(payload);
 
       await owner.update({ refresh_token: tokens.refreshToken });

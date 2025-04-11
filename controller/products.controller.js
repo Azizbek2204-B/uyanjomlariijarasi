@@ -65,7 +65,7 @@ const getProductById = async (req, res) => {
 const updateProductById = async (req, res) => {
     try {
         const { id } = req.params;
-        const {error, value} = reviewValidation(req.body)
+        const {error, value} = productValidation(req.body)
         if (error) {
             return errorHandler(error, res)
         }
