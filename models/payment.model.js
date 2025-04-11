@@ -16,7 +16,7 @@ const Payment = sequelize.define("payments", {
     type: DataTypes.STRING,
     allowNull: false
   },
-  transaction_id: {
+  transactionId: {
     type: DataTypes.STRING,
     allowNull: false
   }
